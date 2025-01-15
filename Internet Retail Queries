@@ -1,0 +1,85 @@
+SELECT * from dbo.ONLINE_retail_ii
+
+select * from dbo.[online_retail_II 2]
+
+select * into #combinedtable from dbo.online_retail_II UNION select * from dbo.[ONLINE_retail_ii 2]
+
+select *  from #combinedtable
+
+/* recency*/
+
+SELECT COUNT(customer_id) as customer from #combinedtable
+
+select MAX(invoicedate) from #combinedtable
+
+SELECT customer_id, DATEDIFF(month, max(invoicedate),'2011-12-09') as recency from #combinedtable
+GROUP by Customer_ID
+ORDER by recency 
+
+/* frequency*/
+
+SELECT COUNT(invoice) as no_of_orders, customer_id from #combinedtable
+GROUP by Customer_ID, Invoice 
+order by no_of_orders
+
+/*Monetaryvalue*/
+
+Select SUM(quantity*price) as Amount_sold, Customer_ID  from #combinedtable
+GROUP BY CUSTOMER_ID, quantity, price
+order by quantity*price DESC
+
+Select customer_id,DATEDIFF(month, max(invoicedate),'2011-12-09') as recency, COUNT(invoice) as no_of_orders,quantity*price as Amount_sold
+from #combinedtable
+GROUP BY Customer_ID, Quantity, Price
+order by recency
+
+/*Productsboughtfrequently*/
+
+SELECT description, count(distinct invoice) as orders from #combinedtable
+group by [Description]
+order by orders
+
+/*numberoforderspercountry*/
+
+SELECT customer_id, country, COUNT(invoice) as number_of_orders from #combinedtable
+group by Customer_ID, Country
+
+/*segmentation*/
+SELECT customer_id, DATEDIFF(month, max(invoicedate),'2011-12-09') as Recency,
+CASE when DATEDIFF(month, max(invoicedate),'2011-12-09') BETWEEN 0 and 6 then 'highrecency_customer'
+      when DATEDIFF(month, max(invoicedate),'2011-12-09') BETWEEN 7 and 14 then 'fairrecency_customer'
+      when DATEDIFF(month, max(invoicedate),'2011-12-09') BETWEEN 15 and 24 then 'poorrecency_customer'
+      end as 'recency_rating', 
+ COUNT(invoice) as frequency_of_orders, 
+CASE WHEN COUNT(invoice) BETWEEN 1 AND 100 then 'poorfrequency_customer' 
+    WHEN  COUNT(invoice) BETWEEN 101 and 400 then 'fairfrequency_customer'
+    WHEN   COUNT(invoice) BETWEEN 401 AND 600 THEN 'goodfrequency_customer'
+    When  COUNT(invoice)  > 600 then 'highfrequency_customer' 
+    end as 'frequency_rating',
+sum(quantity*price) as Amount_sold,
+CASE WHEN sum(quantity*price) <0 then 'debt'
+     WHEN sum(quantity*price) BETWEEN 0 and 99.5 then  'low_buyers'
+     when sum(quantity*price) BETWEEN 99.6 and 499.6 then 'good_buyers'
+     when sum(quantity*price) BETWEEN 499.7 and 1000 then 'high_buyers'
+     when sum(quantity*price) >1000 then 'big_spenders'
+     end as Monetary_rating 
+     INTO #RFM2
+
+     from #combinedtable
+     GROUP by Customer_ID 
+ORDER BY Monetary_rating
+
+select * FROM #RFM2
+ORDER BY Monetary_rating
+
+SELECT *,
+  CASE when monetary_rating between 'big spender' and 'good_buyers' and recency_rating between 'fairrecency_customer' and 'highrecency_customer' then 'highvalue'
+     WHEN frequency_rating= 'goodfrequency_customer' or frequency_rating= 'highfrequency_customer' then 'repeatbuyers'
+     When recency_rating = 'poorrecency_customer' then 'seasonalshoppers'
+     when monetary_rating = 'big_spenders' and frequency_rating = 'poorfrequency_customer' then 'atrisk'
+     When Monetary_rating = 'low_buyers' then 'lowspenders'
+     when recency_rating = 'goodrecency_customer' and Monetary_rating = 'good_buyers' or Monetary_rating = 'good_buyers' and frequency_rating
+      = 'lowfrequency_customer' then 'occasionalbigspenders' 
+     else 'outliers'
+     End as customer_segment
+ from #RFM2

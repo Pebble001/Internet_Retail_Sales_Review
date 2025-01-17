@@ -1,6 +1,6 @@
 # Internet_Retail_Sales_Review
 
-### Dashboard Link :  https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:ea116d18-d5bb-416d-90cd-8c4cc1fe19df
+### Dashboard Link :  https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:59979330-a11b-4b34-9452-4464e964811c
 
 ## Problem Statement
 
@@ -50,25 +50,34 @@ Step 8: Created the queries for customer segmentation into newtemporary table #R
   
 - Step 14 : Total sales, total customers and total countries were respectively represented by card visuals.
 
-<img width="161" alt="Screenshot 2025-01-15 at 10 47 52 AM" src="https://github.com/user-attachments/assets/3da80f72-62ea-409c-b1a2-00d6cf35407e" />
+   <img width="161" alt="Screenshot 2025-01-15 at 10 47 52 AM" src="https://github.com/user-attachments/assets/3da80f72-62ea-409c-b1a2-00d6cf35407e" />
   
 - Step 15 : Sales by country was represented by both column chart and map. Map showed all the countries with total orders represented by dots. 
 
-<img width="298" alt="Screenshot 2025-01-15 at 10 49 37 AM" src="https://github.com/user-attachments/assets/b98481af-b6ad-4ba2-85c5-2ade8293876c" />
+   <img width="298" alt="Screenshot 2025-01-15 at 10 49 37 AM" src="https://github.com/user-attachments/assets/b98481af-b6ad-4ba2-85c5-2ade8293876c" />
 
-<img width="356" alt="Screenshot 2025-01-15 at 10 50 52 AM" src="https://github.com/user-attachments/assets/0d76682d-9a7c-470d-8f0c-d465653bfc81" />
+   <img width="356" alt="Screenshot 2025-01-15 at 10 50 52 AM" src="https://github.com/user-attachments/assets/0d76682d-9a7c-470d-8f0c-d465653bfc81" />
 
 - Step 16 : Line charts were introduced to illustrate sales by quarter, sales by month and frequency of product orders.
 
-<img width="621" alt="Screenshot 2025-01-15 at 10 53 00 AM" src="https://github.com/user-attachments/assets/407f5eef-5856-4c70-a3ff-e356ae7b98f7" />
+   <img width="621" alt="Screenshot 2025-01-15 at 10 53 00 AM" src="https://github.com/user-attachments/assets/407f5eef-5856-4c70-a3ff-e356ae7b98f7" />
 
-<img width="245" alt="Screenshot 2025-01-15 at 10 53 10 AM" src="https://github.com/user-attachments/assets/0658465f-c908-4251-92a5-c1fab8417709" />
+   <img width="245" alt="Screenshot 2025-01-15 at 10 53 10 AM" src="https://github.com/user-attachments/assets/0658465f-c908-4251-92a5-c1fab8417709" />
 
 
 - Step 17 : Piecharts and donut charts represents customer segmentation, customer recency band frequency.
 
-<img width="531" alt="Screenshot 2025-01-15 at 10 54 51 AM" src="https://github.com/user-attachments/assets/598104ec-d3bb-4a00-9050-c810a7c0b65f" />
+   <img width="531" alt="Screenshot 2025-01-15 at 10 54 51 AM" src="https://github.com/user-attachments/assets/598104ec-d3bb-4a00-9050-c810a7c0b65f" />
 
-<img width="250" alt="Screenshot 2025-01-15 at 10 55 00 AM" src="https://github.com/user-attachments/assets/0d5016e4-004d-461e-b660-5b6e850e70bf" />
+  <img width="250" alt="Screenshot 2025-01-15 at 10 55 00 AM" src="https://github.com/user-attachments/assets/0d5016e4-004d-461e-b660-5b6e850e70bf" />
 
 Step 18 : Introduced slicers to interract with the visualization and show data by quarter and by year.
+
+- Step 19 :* The analysis and visualization showed United Kindom as the country with the highest order across the years and quarters.
+           * The business has a high recency as most customers made purchases recently 
+           * Frequency on the other hand was low as only 3.58% of customers had a high frequency, 3.16% had good recency, 25.54% had fair frequency and a majority with 67.71% had                poor frequency.
+           * High Value customers are 77.32%, seasonal shoppers 19.91% and low spenders were 2.77%.
+           * Checking quarterly sales the 4th quarter of the each year was the period where most sales were recorded.
+           * For Monthly sales trends month 11 'november' was the month with the highest recorded sales across the years and in both year 2010 and 2011, differs slightly in 2009                 where sales were recorded only in December.
+           * The product customers ordered the most was the 'White hanging heart T-light holder', followed by 'Regency cakestand 3 tier'. The product ordered the least was 'pack of 72 retro spot cake cases' the product with the second lowest order was 'Dotcom postage'.
+        
